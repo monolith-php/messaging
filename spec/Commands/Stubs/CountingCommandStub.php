@@ -1,8 +1,8 @@
-<?php namespace spec\Monolith\Messaging\Commands;
+<?php namespace spec\Monolith\Messaging\Commands\Stubs;
 
 use Monolith\Messaging\Commands\Command;
 
-class TestCountingCommand implements Command {
+class CountingCommandStub implements Command {
 
     /** @var int */
     private $number;

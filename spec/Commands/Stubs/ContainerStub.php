@@ -1,4 +1,4 @@
-<?php namespace spec\Monolith\Messaging\Commands;
+<?php namespace spec\Monolith\Messaging\Commands\Stubs;
 
 use Psr\Container\ContainerInterface;
 

@@ -1,6 +1,10 @@
 <?php namespace spec\Monolith\Messaging\Commands;
 
 use PhpSpec\ObjectBehavior;
+use spec\Monolith\Messaging\Commands\Stubs\ArgumentCommandStub;
+use spec\Monolith\Messaging\Commands\Stubs\ContainerStub;
+use spec\Monolith\Messaging\Commands\Stubs\EmptyArgumentCommandStub;
+use spec\Monolith\Messaging\Commands\Stubs\ResolutionTargetStub;
 use function spec\Monolith\Messaging\expect;
 
 class ContainerResolutionCommandBusSpec extends ObjectBehavior {

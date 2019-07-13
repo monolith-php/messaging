@@ -1,0 +1,43 @@
+{
+  "name": "monolith/messaging",
+  "description": "Messaging services for the Monolith framework.",
+  "keywords": [
+    "monolith",
+    "messaging",
+    "command bus",
+    "serialization",
+    "event dispatch"
+  ],
+  "authors": [
+    {
+      "name": "Shawn McCool",
+      "email": "shawn@heybigname.com"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "monolith/collections": "^6",
+    "monolith/component-bootstrapping": "^6"
+  },
+  "require-dev": {
+    "phpspec/phpspec": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Monolith\\Messaging\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "spec\\Monolith\\Messaging\\": "spec/"
+    },
+    "files": [
+      "spec/functions.php"
+    ]
+  },
+  "config": {
+    "sort-packages": true,
+    "bin-dir": "bin"
+  },
+  "minimum-stability": "dev"
+}

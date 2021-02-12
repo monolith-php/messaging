@@ -10,18 +10,33 @@
   ],
   "authors": [
     {
-      "name": "Shawn McCool",
-      "email": "shawn@heybigname.com"
+      "name": "Shawn McCool"
     }
   ],
   "require": {
-    "php": "^7.2",
-    "monolith/collections": "^6",
-    "monolith/component-bootstrapping": "^6"
+    "php": ">=8",
+    "psr/container": "^1",
+    "monolith/collections": "^9",
+    "monolith/component-bootstrapping": "^8",
+    "ramsey/uuid": "^4"
   },
   "require-dev": {
-    "phpspec/phpspec": "^4.0"
+    "phpunit/phpunit": "dev-remove-version-string as 9.5.x-dev"
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.humanmusic.eu",
+      "canonical": false,
+      "only": [
+        "monolith/*"
+      ]
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/ShawnMcCool/phpunit"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "Monolith\\Messaging\\": "src/"
@@ -29,10 +44,9 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "spec\\Monolith\\Messaging\\": "spec/"
+      "Tests\\": "tests/"
     },
     "files": [
-      "spec/functions.php"
     ]
   },
   "config": {

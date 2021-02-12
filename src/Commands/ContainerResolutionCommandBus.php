@@ -1,24 +1,20 @@
 <?php namespace Monolith\Messaging\Commands;
 
-use Monolith\Messaging\Bus;
-use Monolith\Messaging\Message;
-use Psr\Container\ContainerInterface as Container;
 use ReflectionClass;
+use Psr\Container\ContainerInterface as Container;
 
-final class ContainerResolutionCommandBus implements Bus
+final class ContainerResolutionCommandBus implements CommandBus
 {
-    /** @var Container */
-    private $container;
-
-    public function __construct(Container $container)
-    {
-        $this->container = $container;
+    public function __construct(
+        private Container $container
+    ) {
     }
 
-    /** This cleans up with php 7.4 */
-    public function dispatch(Message $message): void
+    public function execute(Command $command): void
     {
-        $message->execute(...$this->instantiateParameters($message));
+        $command->execute(
+            ...$this->instantiateParameters($command)
+        );
     }
 
     /**
@@ -29,10 +25,13 @@ final class ContainerResolutionCommandBus implements Bus
      * @return array
      * @throws \ReflectionException
      */
-    private function instantiateParameters(Command $command)
+    private function instantiateParameters(Command $command): array
     {
-        return array_map(function (\ReflectionParameter $param) {
-            return $this->container->get($param->getType()->getName());
-        }, (new ReflectionClass(get_class($command)))->getMethod('execute')->getParameters());
+        return array_map(
+            function (\ReflectionParameter $param) {
+                return $this->container->get($param->getType()->getName());
+            },
+            (new ReflectionClass(get_class($command)))->getMethod('execute')->getParameters()
+        );
     }
 }
